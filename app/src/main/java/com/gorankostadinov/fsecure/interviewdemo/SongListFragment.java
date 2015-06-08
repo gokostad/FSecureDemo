@@ -69,7 +69,6 @@ public class SongListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: replace with a real list adapter.
         setListAdapter(new SongListAdapter(getActivity()));
     }
 

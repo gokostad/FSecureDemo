@@ -6,6 +6,9 @@ import android.view.Gravity;
 import android.graphics.Canvas;
 import android.widget.TextView;
 
+/**
+ * Vertical direction text widget, support all TextView attributes
+ */
 public class VerticalTextView extends TextView{
     final boolean topDown;
 

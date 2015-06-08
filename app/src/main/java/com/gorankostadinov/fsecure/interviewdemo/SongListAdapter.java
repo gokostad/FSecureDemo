@@ -14,6 +14,9 @@ import android.R.layout.*;
 import com.gorankostadinov.fsecure.interviewdemo.datasource.StaticDataSource;
 import com.gorankostadinov.fsecure.interviewdemo.datasource.StaticDataSource.Song;
 
+/**
+ * Adapter, enabling us to show title, picture and band name
+ */
 public class SongListAdapter extends ArrayAdapter<Song> {
 
     private final Activity context;

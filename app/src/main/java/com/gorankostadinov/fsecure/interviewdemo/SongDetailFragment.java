@@ -25,7 +25,7 @@ public class SongDetailFragment extends Fragment {
     public static final int DESCRIPTION_MAX_LENGTH = 200;
 
     /**
-     * The dummy content this fragment is presenting.
+     * The content this fragment is presenting.
      */
     private StaticDataSource.Song mSong;
 
@@ -41,7 +41,7 @@ public class SongDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
+            // Load the content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
             mSong = StaticDataSource.SONG_MAP.get(Integer.parseInt(
@@ -54,7 +54,7 @@ public class SongDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_song_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
+        // Show the content.
         if (mSong != null) {
             TextView txtSongTitle = (TextView)rootView.findViewById(R.id.songTitle);
             ImageView imgSongPicture = (ImageView)rootView.findViewById(R.id.songPicture);
