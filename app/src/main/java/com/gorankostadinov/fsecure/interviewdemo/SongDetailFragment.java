@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gorankostadinov.fsecure.interviewdemo.datasource.StaticDataSource;
@@ -54,7 +55,16 @@ public class SongDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mSong != null) {
-            ((TextView) rootView.findViewById(R.id.song_detail)).setText(mSong.getBand());
+            TextView txtSongTitle = (TextView)rootView.findViewById(R.id.songTitle);
+            ImageView imgSongPicture = (ImageView)rootView.findViewById(R.id.songPicture);
+            TextView txtBandName = (TextView)rootView.findViewById(R.id.bandName);
+            TextView txtDesc = (TextView)rootView.findViewById(R.id.songDescription);
+
+            txtSongTitle.setText(mSong.getName());
+            imgSongPicture.setImageResource(mSong.getImgid());
+            txtBandName.setText(mSong.getBand());
+            txtDesc.setText(mSong.getDescriptor().substring(0,
+                    mSong.getDescriptor().length() > 200 ? 200 : mSong.getDescriptor().length()));
         }
 
         return rootView;
