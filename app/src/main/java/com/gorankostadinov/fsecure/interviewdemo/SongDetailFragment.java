@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.gorankostadinov.fsecure.interviewdemo.dummy.DummyContent;
+import com.gorankostadinov.fsecure.interviewdemo.datasource.StaticDataSource;
 
 /**
  * A fragment representing a single Song detail screen.
@@ -25,7 +25,7 @@ public class SongDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContent.DummyItem mItem;
+    private StaticDataSource.Song mSong;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -42,7 +42,8 @@ public class SongDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            mSong = StaticDataSource.SONG_MAP.get(Integer.parseInt(
+                    getArguments().get(ARG_ITEM_ID).toString()));
         }
     }
 
@@ -52,8 +53,8 @@ public class SongDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_song_detail, container, false);
 
         // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.song_detail)).setText(mItem.content);
+        if (mSong != null) {
+            ((TextView) rootView.findViewById(R.id.song_detail)).setText(mSong.getBand());
         }
 
         return rootView;

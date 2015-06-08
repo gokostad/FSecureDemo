@@ -3,6 +3,7 @@ package com.gorankostadinov.fsecure.interviewdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.ListView;
 
 
 /**
@@ -29,6 +30,7 @@ public class SongListActivity extends FragmentActivity
      * device.
      */
     private boolean mTwoPane;
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +59,13 @@ public class SongListActivity extends FragmentActivity
      * indicating that the item with the given ID was selected.
      */
     @Override
-    public void onItemSelected(String id) {
+    public void onItemSelected(Integer id) {
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(SongDetailFragment.ARG_ITEM_ID, id);
+            arguments.putString(SongDetailFragment.ARG_ITEM_ID, id.toString());
             SongDetailFragment fragment = new SongDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
@@ -74,7 +76,7 @@ public class SongListActivity extends FragmentActivity
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, SongDetailActivity.class);
-            detailIntent.putExtra(SongDetailFragment.ARG_ITEM_ID, id);
+            detailIntent.putExtra(SongDetailFragment.ARG_ITEM_ID, id.toString());
             startActivity(detailIntent);
         }
     }
