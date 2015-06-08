@@ -22,6 +22,7 @@ public class SongDetailFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
+    public static final int DESCRIPTION_MAX_LENGTH = 200;
 
     /**
      * The dummy content this fragment is presenting.
@@ -64,7 +65,8 @@ public class SongDetailFragment extends Fragment {
             imgSongPicture.setImageResource(mSong.getImgid());
             txtBandName.setText(mSong.getBand());
             txtDesc.setText(mSong.getDescriptor().substring(0,
-                    mSong.getDescriptor().length() > 200 ? 200 : mSong.getDescriptor().length()));
+                                mSong.getDescriptor().length() > DESCRIPTION_MAX_LENGTH ?
+                                DESCRIPTION_MAX_LENGTH : mSong.getDescriptor().length()));
         }
 
         return rootView;

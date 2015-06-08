@@ -2,12 +2,9 @@ package com.gorankostadinov.fsecure.interviewdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
-
 
 /**
  * An activity representing a list of Songs. This activity
@@ -33,7 +30,6 @@ public class SongListActivity extends ActionBarActivity
      * device.
      */
     private boolean mTwoPane;
-    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
