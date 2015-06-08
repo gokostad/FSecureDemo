@@ -3,6 +3,8 @@ package com.gorankostadinov.fsecure.interviewdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.widget.ListView;
 
 
@@ -22,7 +24,7 @@ import android.widget.ListView;
  * {@link SongListFragment.Callbacks} interface
  * to listen for item selections.
  */
-public class SongListActivity extends FragmentActivity
+public class SongListActivity extends ActionBarActivity
         implements SongListFragment.Callbacks {
 
     /**
@@ -31,6 +33,13 @@ public class SongListActivity extends FragmentActivity
      */
     private boolean mTwoPane;
     private ListView list;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
