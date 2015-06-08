@@ -2,8 +2,9 @@ package com.gorankostadinov.fsecure.interviewdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * An activity representing a list of Songs. This activity
@@ -21,7 +22,7 @@ import android.support.v4.app.FragmentActivity;
  * {@link SongListFragment.Callbacks} interface
  * to listen for item selections.
  */
-public class SongListActivity extends FragmentActivity
+public class SongListActivity extends ActionBarActivity
         implements SongListFragment.Callbacks {
 
     /**
@@ -57,13 +58,13 @@ public class SongListActivity extends FragmentActivity
      * indicating that the item with the given ID was selected.
      */
     @Override
-    public void onItemSelected(String id) {
+    public void onItemSelected(Integer id) {
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(SongDetailFragment.ARG_ITEM_ID, id);
+            arguments.putString(SongDetailFragment.ARG_ITEM_ID, id.toString());
             SongDetailFragment fragment = new SongDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
@@ -74,8 +75,30 @@ public class SongListActivity extends FragmentActivity
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, SongDetailActivity.class);
-            detailIntent.putExtra(SongDetailFragment.ARG_ITEM_ID, id);
+            detailIntent.putExtra(SongDetailFragment.ARG_ITEM_ID, id.toString());
             startActivity(detailIntent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_about) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

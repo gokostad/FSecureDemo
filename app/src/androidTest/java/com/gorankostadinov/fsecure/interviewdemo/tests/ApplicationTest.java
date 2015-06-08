@@ -1,4 +1,4 @@
-package com.gorankostadinov.fsecure.interviewdemo;
+package com.gorankostadinov.fsecure.interviewdemo.tests;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
@@ -9,5 +9,13 @@ import android.test.ApplicationTestCase;
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
+    }
+    
+    @Override
+    protected void setUp() throws Exception {
+    }
+
+    public void testMasterActivityNumberOfItems() throws Exception {
+
     }
 }
