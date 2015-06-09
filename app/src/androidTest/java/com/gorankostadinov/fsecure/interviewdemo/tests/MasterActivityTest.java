@@ -1,6 +1,7 @@
 package com.gorankostadinov.fsecure.interviewdemo.tests;
 
 import com.gorankostadinov.fsecure.interviewdemo.SongListActivity;
+import com.gorankostadinov.fsecure.interviewdemo.SongListFragment;
 import com.gorankostadinov.fsecure.interviewdemo.R;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -24,16 +25,18 @@ public class MasterActivityTest extends ActivityInstrumentationTestCase2<SongLis
         super.setUp();
 
         activity = getActivity();
-        list = (ListView) activity.findViewById(R.id.list);
-        assertNotNull("The list was not loaded", list);
     }
 
     @SmallTest
     public void testListItemsNumber()
     {
         getInstrumentation().waitForIdleSync();
-        ListAdapter adapter = list.getAdapter();
+        SongListFragment listFragment = (SongListFragment) activity.getSupportFragmentManager().findFragmentById(R.id.song_list);
+        assertNotNull("The list was not loaded", listFragment);
+
+        ListAdapter adapter = listFragment.getListAdapter();
         assertNotNull("The null adapter", adapter);
+
         assertEquals(StaticDataSource.MAX_SONGS, adapter.getCount());
     }
 }
