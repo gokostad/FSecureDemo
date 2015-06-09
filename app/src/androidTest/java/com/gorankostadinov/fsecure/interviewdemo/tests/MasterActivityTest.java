@@ -2,11 +2,14 @@ package com.gorankostadinov.fsecure.interviewdemo.tests;
 
 import com.gorankostadinov.fsecure.interviewdemo.SongListActivity;
 import com.gorankostadinov.fsecure.interviewdemo.SongListFragment;
+import com.gorankostadinov.fsecure.interviewdemo.datasource.StaticDataSource.Song;
 import com.gorankostadinov.fsecure.interviewdemo.R;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.ListView;
 import android.widget.ListAdapter;
+import android.content.Intent;
+
 
 import com.gorankostadinov.fsecure.interviewdemo.datasource.StaticDataSource;
 
@@ -71,7 +74,9 @@ public class MasterActivityTest extends ActivityInstrumentationTestCase2<SongLis
                 activity.getSupportFragmentManager().findFragmentById(R.id.song_list);
         assertNotNull("The list was not loaded", listFragment);
 
-        assertTrue(TEST_SONGLIST_POSITION_CLICK >= listFragment.getListAdapter().getCount());
+        assertTrue(TEST_SONGLIST_POSITION_CLICK < listFragment.getListAdapter().getCount());
+
+        Song songMaster = (Song) listFragment.getListAdapter().getItem(TEST_SONGLIST_POSITION_CLICK);
 
         // BEGIN_INCLUDE (launch_detail_activity)
         // Launch the activity
@@ -88,6 +93,7 @@ public class MasterActivityTest extends ActivityInstrumentationTestCase2<SongLis
         // END_INCLUDE (launch_detail_activity)
 
         getInstrumentation().waitForIdleSync();
+
         // BEGIN_INCLUDE (compare_detail_text)
         // END_INCLUDE (compare_detail_text)
 

@@ -14,8 +14,4 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     @Override
     protected void setUp() throws Exception {
     }
-
-    public void testMasterActivityNumberOfItems() throws Exception {
-
-    }
 }
